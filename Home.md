@@ -1,0 +1,57 @@
+# リポジトリの作り方
+## 準備
+見本のリポジトリは[ココ](https://github.com/BlitzModder/BMRepository)にあります。  
+リポジトリを作る際に困ったときは、この見本のリポジトリを参考にしてください。  
+まず、自分の[Github](https://github.com)アカウントを作る必要があります。  
+その後、`BMRepository`という名前のリポジトリを作成します。  
+## plistファイルの作成
+Modデータの入ったフォルダを用意します。フォルダ名は`Data`にして、Blitzの`Data`フォルダ内のファイル構造と  
+全く同じ構造になるように配置する必要があります。  
+つまり、そのフォルダをBlitzのアプリ内にあるDataフォルダとマージすることでModを適用できるような状態  
+にする必要があるということです。  
+次に、その`Data`フォルダをzip圧縮します。ファイル名は一時的に`Data.zip`としておきましょう。  
+OSの圧縮機能を使うのではなく、Linuxのzipコマンドを使用したほうがよいでしょう。    
+そして、Modリストはplistファイルを読み込むことによって生成されています。  
+[見本のplistファイル](https://github.com/BlitzModder/BMRepository/blob/iOS/en.plist)を見てください。  
+![correspond-1](http://subdiox.com/blitzmodder/ja/img/correspond-1.png)
+一番目のDictionaryのKeyはModのカテゴリ名、二番目のKeyはそのModの種類名に対応しています。  
+![correspond-2](http://subdiox.com/blitzmodder/ja/img/correspond-2.png)
+二番目のkeyは項目をタップした後に表示される画面のタイトルとも対応しており、三番目はそのModの具体的な名前と対応します。  
+DictionaryのKeyは`表示名:ID`のように設定してください。このとき、次のルールを守るようにしてください。
+- それぞれのkeyについて、1つだけのコロン`:`が含まれている必要があります。複数の`:`があると、`error`と表示されます。
+- `en.plist`には英語のMod名、`ja.plist`には日本語のMod名を書きましょう。
+- IDは小文字のアルファベット、数字、アンダーバーで構成しましょう。ピリオドを含んではいけません。
+
+## `Install`フォルダと`Remove`フォルダの作成
+`en.plist`と`ja.plist`の作成が終わったら、`BMRepository`フォルダを作りそれらを入れます。  
+`BMRepository`フォルダの中に、`Install`フォルダを作ります。先ほど作った`Data.zip`をこの中にいれます。  
+`Data.zip`を`[一番目のDictionary KeyのID].[二番目のDictionary KeyのID].[三番目のDictionary KeyのID].zip`に変更します。  
+たとえば、`Gfx Mods/Reticle/HUD Type`のModを作った場合、`Data.zip`のファイル名を`gfx.reticle.hud.zip`に変更します。  
+`Install`フォルダの中にすべてのModデータを入れ終わったら、`BMRepository`フォルダの中で以下のコマンドを実行します。
+  
+    git add .
+    git commit -m "add mods"
+    git remote add origin https://github.com/ユーザ名/BMRepository.git
+    git push origin master
+
+次に削除用データを作る必要があります。`Install`フォルダから`Remove`フォルダを自動生成するスクリプトを作りました。  
+以下のコマンドを実行して`Remove`フォルダを自動生成してください。  
+
+    git submodule add https://github.com/BlitzModder/BMData Data
+    curl -O https://github.com/BlitzModder/BMRepository/raw/master/autogen.sh
+    bash autogen.sh
+    git add .
+    git commit -m "add remove"
+    git push origin master
+
+## Modの詳細ページの作成 (オプション)
+オプションとして、Modをタップしたときに表示される詳細ページを作ることができます。  
+まず、Detailフォルダを作成してください。その中に`en`, `ja`, `img`フォルダを作成してください。  
+Modの詳細ページのhtmlファイルを`en`, `ja`フォルダの中にそれぞれ入れます。画像を使用する場合は`img`フォルダの中に入れてください。
+htmlファイルのファイル名はModのzipファイル名と同様、`[一番目のDictionary KeyのID].[二番目のDictionary KeyのID].[三番目のDictionary KeyのID].html`
+とする必要があります。たとえば、`HUD Type`の場合は、`gfx.reticle.hud.html`にする必要があります。
+すべてのhtmlファイルを置き終わったら、以下のコマンドを実行してください。
+
+    git add .
+    git commit -m "add html"
+    git push origin master
