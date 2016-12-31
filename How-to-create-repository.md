@@ -64,8 +64,7 @@ Execute the following commands in `BMRepository` directory.
     git commit -m "add remove"
     git push origin master
 
-# C
-# Modの詳細ページの作成 (オプション)
+# Add the detail page to your mods (optional)
 If you want to, you can add detail webpage of your mods to your BMRepository.  
 First, make `Detail` directory. Create `en`, `ja`, `img` directory in Detail directory.
 Put the html files of the detail pages of your mods in `en`, `ja` directory.
