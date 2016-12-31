@@ -38,12 +38,12 @@ In order to specify them, you have to set the string corresponds to key of mod a
 If your mod is compatible with Blitz 3.4.2 on iOS, Windows, macOS, this string should be `3.4.2:iwm`.  
 
 # Create Install and Remove directory
-After creating `en.plist` and `ja.plist`, make `BMRepository` directory and put them in it.
+After creating `en.plist` and `ja.plist`, make `BMRepository` directory and put them in it.  
 In `BMRepository` directory, make `Install` directory. In `Install` directory, put a directory that has mod data.  
-Rename the directory to `Data`, and this directory has to have the same structure as `Data` directory in Blitz.
+Rename the directory to `Data`, and this directory has to have the same structure as `Data` directory in Blitz.  
 In other words, the directory has to be able to be applied if you merge it with the original Data directory.  
-Next, archive `Data` directory as zip. There are many ways to archive as zip, but please use zip command.   
-Launch Terminal, and execute the following command in `Install` directory.
+Next, archive `Data` directory as zip. There are many ways to archive as zip, but please use zip command.  
+Launch Terminal, and execute the following command in `Install` directory.  
 
     zip -r First_ID.Second_ID.Third_ID.zip Data
 
