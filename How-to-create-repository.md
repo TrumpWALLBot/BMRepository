@@ -66,11 +66,11 @@ Execute the following commands in `BMRepository` directory.
 
 # Add the detail page to your mods (optional)
 If you want to, you can add detail webpage of your mods to your BMRepository.  
-First, make `Detail` directory. Create `en`, `ja`, `img` directory in Detail directory.
-Put the html files of the detail pages of your mods in `en`, `ja` directory.
+First, make `Detail` directory. Create `en`, `ja`, `img` directory in Detail directory.  
+Put the html files of the detail pages of your mods in `en`, `ja` directory.  
 Put images into `img` directory if you use images in your html. html file names have to be `First_ID.Second_ID.Third_ID.html` like as zip file names.  
 For example, in `HUD Type` case, it should be `gfx.reticle.hud.html`.  
-After you finish putting all detail page files in it, run the following commands:
+After you finish putting all detail page files in it, run the following commands:  
 
     git add .
     git commit -m "add html"
