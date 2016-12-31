@@ -2,7 +2,7 @@
 In order to create repository, you must have macOS or Linux. We don't support other platforms.  
 Sample repository is [here](https://github.com/BlitzModder/BMRepository). When you trouble creating repository, please refer to this sample.  
 First, you have to create your own [GitHub](https://github.com) account. After that, create a repository named `BMRepository`.
-# Create plist file
+# Create plist files
 ## Input necessary information
 The mod list shown in BlitzModder is generated from plist file on GitHub repository.  
 Refer to [Sample plist file](https://github.com/BlitzModder/BMRepository/blob/master/en.plist).  
